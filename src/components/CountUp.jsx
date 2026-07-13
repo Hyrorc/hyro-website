@@ -25,19 +25,20 @@ export default function CountUp({ value, duration = 1400, className = '' }) {
       raf = requestAnimationFrame(tick)
     }
 
+    // Only start once the element is FULLY inside the viewport.
     const r = el.getBoundingClientRect()
-    if (r.top < window.innerHeight && r.bottom > 0) {
+    if (r.top >= 0 && r.bottom <= window.innerHeight) {
       run()
       return () => cancelAnimationFrame(raf)
     }
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.intersectionRatio >= 1) {
           io.disconnect()
           run()
         }
       },
-      { threshold: 0.4 }
+      { threshold: 1 }
     )
     io.observe(el)
     return () => {

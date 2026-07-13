@@ -42,10 +42,6 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="footer-bottom-inner">
           <span>{FOOTER.copyright}</span>
-          <span className="legal">
-            <span>Privacy Policy</span>
-            <span>Terms &amp; Conditions</span>
-          </span>
         </div>
       </div>
     </footer>

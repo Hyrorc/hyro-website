@@ -463,7 +463,7 @@ main, .footer { position: relative; z-index: 1; }
   max-width: var(--container);
   margin: 0 auto;
   padding: 22px var(--pad-x);
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: center; align-items: center;
   font-size: 12px; font-weight: 300; color: rgba(245, 243, 240, 0.35);
 }
 .footer-bottom-inner .legal { display: flex; gap: 28px; }

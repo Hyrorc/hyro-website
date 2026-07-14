@@ -468,6 +468,46 @@ main, .footer { position: relative; z-index: 1; }
 }
 .footer-bottom-inner .legal { display: flex; gap: 28px; }
 
+/* ---------- micro animations ---------- */
+
+/* H-Y-R-O tiles: staggered pop with a soft gold afterglow */
+.letter-cell-anim { opacity: 0; }
+.reveal.in .letter-cell-anim {
+  animation: tile-pop 0.65s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+  animation-delay: var(--d, 0s);
+}
+.reveal.in .letter-cell-anim .card {
+  animation: tile-glow 1.5s ease both;
+  animation-delay: calc(var(--d, 0s) + 0.3s);
+}
+@keyframes tile-pop {
+  0% { opacity: 0; transform: translateY(24px) scale(0.72); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes tile-glow {
+  0% { box-shadow: 0 0 0 rgba(185, 151, 74, 0); }
+  35% { box-shadow: 0 0 26px rgba(185, 151, 74, 0.35); }
+  100% { box-shadow: 0 0 0 rgba(185, 151, 74, 0); }
+}
+
+/* nav links: gold underline sweep on hover */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: -6px;
+  height: 1px;
+  background: var(--gold);
+  transition: right 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after { right: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .letter-cell-anim, .reveal.in .letter-cell-anim, .reveal.in .letter-cell-anim .card { animation: none; opacity: 1; }
+  .nav-link::after { transition: none; }
+}
+
 /* ---------- reveal on scroll ---------- */
 
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }

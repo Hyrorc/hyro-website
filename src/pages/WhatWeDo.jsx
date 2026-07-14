@@ -3,6 +3,7 @@ import { ABOUT, STATS } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import Stars from '../components/Stars'
+import CountUp from '../components/CountUp'
 
 const ACRONYM = [
   ['H', 'Hire'],
@@ -40,8 +41,8 @@ export default function WhatWeDo() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 80, alignItems: 'center' }}>
             <Reveal>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, maxWidth: 440 }}>
-                {ACRONYM.map(([letter, word]) => (
-                  <div key={letter} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+                {ACRONYM.map(([letter, word], i) => (
+                  <div key={letter} className="letter-cell-anim" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, '--d': `${i * 0.14}s` }}>
                     <div
                       className="card"
                       style={{
@@ -95,7 +96,7 @@ export default function WhatWeDo() {
                       padding: '0 12px',
                     }}
                   >
-                    <div className="stat-value">{s.value}</div>
+                    <div className="stat-value"><CountUp value={s.value} /></div>
                     <div className="stat-label" style={{ marginTop: 8 }}>{s.label}</div>
                   </div>
                 ))}

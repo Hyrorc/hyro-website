@@ -4,7 +4,7 @@ import { sendForm } from '../lib/sendForm'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import Photo from '../components/Photo'
-import { PHOTOS } from '../lib/photos'
+import freelanceLaptop from '../assets/freelance-cafe-laptop.png'
 
 export default function Join() {
   const [submitted, setSubmitted] = useState(false)
@@ -71,15 +71,9 @@ export default function Join() {
         <div className="container">
           <div className="form-split">
             <Reveal className="form-aside">
-             <Photo
-  src={PHOTOS.portraitMan}
-  alt="Join the HYRO freelance network"
-  plain
->
-  <span className="photo-badge" style={{ top: 16, left: 16 }}>
-    Freelance Network
-  </span>
-</Photo>
+              <Photo src={freelanceLaptop} alt="Join the HYRO freelance network" noFilter>
+                <span className="photo-badge" style={{ top: 16, left: 16 }}>Freelance Network</span>
+              </Photo>
               <div className="feat-list">
                 <div className="feat"><span className="fx"><Icon name="check" size={14} /></span><span className="ft">Vetted, premium projects</span></div>
                 <div className="feat"><span className="fx"><Icon name="check" size={14} /></span><span className="ft">Work on your terms</span></div>

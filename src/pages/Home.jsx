@@ -5,21 +5,12 @@ import Photo from '../components/Photo'
 import CountUp from '../components/CountUp'
 import { PHOTOS } from '../lib/photos'
 import { HERO, PILLARS, INDUSTRIES, STATS } from '../lib/content'
-
-function GoldArrow() {
-  return (
-    <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 14 C 30 8, 58 18, 64 50" />
-      <path d="M50 44 L65 53 L69 37" />
-    </svg>
-  )
-}
+import heroWatch from '../assets/hero-watch.png'
 
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="hero">
+      <section className="hero" style={{ '--hero-image': `url(${heroWatch})` }}>
         <div className="container hero-grid">
           <div className="hero-content">
             <Reveal>
@@ -36,33 +27,29 @@ export default function Home() {
             </Reveal>
             <Reveal delay={3}>
               <div className="hero-cta-grid">
-                <Link to="/jobs" className="btn btn-primary">
-                  Submit Your Profile <Icon name="arrow" size={14} />
+                <Link to="/jobs" className="hero-action hero-action-primary">
+                  <Icon name="users" size={22} />
+                  <span>Submit Your Profile</span>
+                  <Icon name="arrow" size={21} />
                 </Link>
-                <Link to="/partner" className="btn btn-ghost">
-                  Hire Through HYRO
+                <Link to="/partner" className="hero-action">
+                  <Icon name="search" size={22} />
+                  <span>Hire Through HYRO</span>
+                  <Icon name="arrow" size={21} />
                 </Link>
-                <Link to="/join" className="btn btn-ghost">
-                  Become a Freelancer
+                <Link to="/join" className="hero-action">
+                  <Icon name="award" size={22} />
+                  <span>Become a Freelancer</span>
+                  <Icon name="arrow" size={21} />
                 </Link>
-                <Link to="/partner" className="btn btn-ghost">
-                  Build Partnerships
+                <Link to="/partner" className="hero-action">
+                  <Icon name="handshake" size={22} />
+                  <span>Build Partnerships</span>
+                  <Icon name="arrow" size={21} />
                 </Link>
               </div>
             </Reveal>
           </div>
-
-          <Reveal delay={2}>
-            <div className="hero-photo">
-              <span className="accent-arrow hero-arrow" aria-hidden="true"><GoldArrow /></span>
-              <img
-                src={PHOTOS.heroMeeting}
-                className="hero-photo-img"
-                alt="A HR partner you can trust"
-                loading="eager"
-              />
-            </div>
-          </Reveal>
         </div>
       </section>
 

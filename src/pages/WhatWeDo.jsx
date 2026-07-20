@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
-import { ABOUT, STATS } from '../lib/content'
+import { ABOUT, SERVICES, STATS } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
-import Photo from '../components/Photo'
 import CountUp from '../components/CountUp'
-import { PHOTOS } from '../lib/photos'
-import aboutBg from '../assets/about-hero-bg.jpg'
+import philosophyBooks from '../assets/about-philosophy-books.png'
+import rowingTeam from '../assets/about-rowing-team.png'
 
 const ACRONYM = [
   ['H', 'Hire'],
@@ -17,122 +16,112 @@ const ACRONYM = [
 export default function WhatWeDo() {
   return (
     <>
-      {/* HERO — skyline background with layered content */}
-      <header className="about-hero">
-        <img src={aboutBg} className="about-hero-bg-img" alt="" aria-hidden="true" loading="eager" />
-        <div className="about-hero-overlay">
-          <div className="container">
-            <div className="about-hero-copy">
-              <Reveal>
-                <span className="kicker">{ABOUT.kicker}</span>
-              </Reveal>
-              <Reveal delay={1}>
-                <h1 className="about-hero-h1">
-                  Here&apos;s what<br />
-                  <span className="gold-italic">sets us apart.</span>
-                </h1>
-              </Reveal>
-              <Reveal delay={2}>
-                <p className="about-hero-lead">{ABOUT.p1}</p>
-              </Reveal>
-              <Reveal delay={3}>
-                <div className="hero-ctas">
-                  <Link to="/approach" className="btn btn-primary">
-                    Our Approach <Icon name="arrow" size={14} />
-                  </Link>
-                  <Link to="/partner" className="btn btn-ghost">
-                    Partner With Us
-                  </Link>
+      <header className="about-name-section">
+        <div className="container">
+          <Reveal>
+            <div className="about-name-heading">
+              <span className="kicker centered">Our Name Says It All</span>
+            </div>
+          </Reveal>
+
+          <div className="about-letter-grid">
+            {ACRONYM.map(([letter, word], index) => (
+              <Reveal key={letter} delay={index + 1}>
+                <div className="about-letter-card">
+                  <span className="about-letter">{letter}</span>
+                  <span className="about-letter-word">{word}</span>
+                  <span className="about-letter-line" />
                 </div>
               </Reveal>
-            </div>
+            ))}
           </div>
-        </div>
-      </header>
 
-      {/* PHILOSOPHY — media split */}
-      <section className="section">
-        <div className="container">
-          <div className="media-split">
-            <Reveal className="ms-media">
-              <Photo src={PHOTOS.leaderWoman} alt="Shaping the future of leadership" ratio="5 / 4" />
-            </Reveal>
-            <Reveal delay={1} className="ms-copy">
-              <span className="kicker">Our Name Is Our Philosophy</span>
-              <h2 className="section-h2" style={{ marginTop: 16 }}>{ABOUT.philosophyH2}</h2>
-              <p className="lead" style={{ marginTop: 20 }}>{ABOUT.philosophyP1}</p>
-              <p className="muted" style={{ marginTop: 16 }}>{ABOUT.philosophyP2}</p>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, maxWidth: 460, marginTop: 32 }}>
-                {ACRONYM.map(([letter, word], i) => (
-                  <div key={letter} className="letter-cell-anim" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, '--d': `${i * 0.12}s` }}>
-                    <div
-                      className="card"
-                      style={{
-                        width: '100%', aspectRatio: '1', maxWidth: 82, borderRadius: 14, padding: 0,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontFamily: 'var(--font-head)', fontStyle: 'italic', fontSize: 40, fontWeight: 500, color: 'var(--gold-deep)',
-                      }}
-                    >
-                      {letter}
-                    </div>
-                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 600, color: 'var(--navy)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                      {word}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* STAT BAND */}
-      <section className="section tight stat-band">
-        <div className="container">
-          <div className="stat-grid" style={{ gridTemplateColumns: `repeat(${STATS.length}, 1fr)` }}>
-            {STATS.map((s) => (
-              <Reveal key={s.label} className="stat-cell">
-                <div className="stat-value"><CountUp value={s.value} /></div>
-                <div className="stat-label" style={{ marginTop: 8 }}>{s.label}</div>
+          <div className="about-stat-grid">
+            {STATS.map((stat, index) => (
+              <Reveal key={stat.label} delay={index + 1} className="about-stat">
+                <div className="about-stat-value"><CountUp value={stat.value} /></div>
+                <div className="about-stat-label">{stat.label}</div>
               </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* QUOTE — cream */}
-      <section className="section cream">
-        <div className="container" style={{ textAlign: 'center', maxWidth: 860, marginInline: 'auto' }}>
+      <section className="about-quote-band">
+        <div className="container">
           <Reveal>
-            <span style={{ color: 'var(--gold)', fontSize: 56, fontFamily: 'var(--font-serif)', lineHeight: 0.5, display: 'inline-block' }}>&ldquo;</span>
-            <p className="section-h2" style={{ fontWeight: 700, lineHeight: 1.25, marginTop: 10 }}>
-              {ABOUT.quote}
-            </p>
-            <p className="kicker centered" style={{ marginTop: 28 }}>{ABOUT.quoteAttr}</p>
+            <div className="about-quote-mark">“</div>
+            <blockquote>
+              The right person doesn&apos;t just fill a role.<br />
+              <em>They shape the future of a business.</em>
+            </blockquote>
+            <span className="about-quote-line" />
           </Reveal>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta-band">
-        <span className="ghost-word">HYRO</span>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <Reveal>
-            <h2 className="section-h2">
-              Let&apos;s build <span className="gold-italic">your team.</span>
-            </h2>
+      <section className="about-editorial about-editorial-light">
+        <div className="about-editorial-grid">
+          <div className="about-editorial-copy">
+            <Reveal>
+              <span className="kicker">Our Philosophy</span>
+              <h2 className="about-editorial-title">
+                Our Name Is<br /><span className="gold-italic">Our Philosophy</span>
+              </h2>
+              <div className="about-gold-rule" />
+              <p>{ABOUT.philosophyP1}</p>
+              <p>{ABOUT.philosophyP2}</p>
+            </Reveal>
+          </div>
+          <Reveal className="about-editorial-image-wrap">
+            <img src={philosophyBooks} className="about-editorial-image" alt="Vintage books representing knowledge, experience, and thoughtful leadership" />
           </Reveal>
-          <Reveal delay={1}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 32 }}>
-              <Link to="/partner" className="btn btn-primary">
-                Partner With Us <Icon name="arrow" size={14} />
+        </div>
+      </section>
+
+      <section className="about-editorial about-editorial-dark">
+        <div className="about-editorial-grid about-editorial-grid-reverse">
+          <Reveal className="about-editorial-image-wrap">
+            <img src={rowingTeam} className="about-editorial-image" alt="A rowing team moving together with precision" />
+          </Reveal>
+          <div className="about-editorial-copy">
+            <Reveal delay={1}>
+              <span className="kicker">About Us</span>
+              <h2 className="about-editorial-title">
+                {ABOUT.h2a}<br /><span className="gold-italic">{ABOUT.h2b}</span>
+              </h2>
+              <div className="about-gold-rule" />
+              <p>{ABOUT.p1}</p>
+              <p>{ABOUT.philosophyP2}</p>
+              <Link to="/contact" className="btn btn-primary about-contact-btn">
+                Get In Touch <Icon name="arrow" size={14} />
               </Link>
-              <Link to="/jobs" className="btn btn-ghost">
-                Submit Your Profile
-              </Link>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-services-section">
+        <div className="container">
+          <Reveal>
+            <div className="about-services-heading">
+              <span className="kicker centered">Our Services</span>
+              <h2 className="section-h2">How we help you <span className="gold-italic">move forward.</span></h2>
             </div>
           </Reveal>
+          <div className="about-services-grid">
+            {SERVICES.items.map((service, index) => (
+              <Reveal key={service.title} delay={index + 1}>
+                <Link to="/services" className="about-service-card">
+                  <span className="about-service-number">{service.num}</span>
+                  <Icon name={service.icon} size={25} />
+                  <h3>{service.title}</h3>
+                  <p>{service.tag}</p>
+                  <span className="about-service-link">Explore Service <Icon name="arrow" size={14} /></span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </>

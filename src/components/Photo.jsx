@@ -1,13 +1,3 @@
-// Duotone photo frame. Renders an image under a navy/sepia duotone treatment
-// (shadows -> navy, highlights -> warm cream), matching the HYRO brand set.
-//
-// props:
-//   src, alt        image
-//   tone            'navy' (default) | 'plain' (light editorial gray)
-//   ratio           CSS aspect-ratio, e.g. '4 / 5', '16 / 10'
-//   veil            true -> adds a bottom gradient for legible overlaid content
-//   className       extra classes
-//   children        overlay content (chips, captions) — sits above the duotone
 export default function Photo({
   src,
   alt = '',
@@ -18,15 +8,17 @@ export default function Photo({
   children,
   eager = false,
   plain = false,
+  noFilter = false,
 }) {
+  const unfiltered = plain || noFilter
+
   return (
     <div
-      className={`photo photo--${tone}${veil ? ' photo--veil' : ''} ${className}`.trim()}
+      className={`photo photo--${tone}${veil ? ' photo--veil' : ''}${unfiltered ? ' photo--no-filter' : ''} ${className}`.trim()}
       style={ratio ? { aspectRatio: ratio } : undefined}
     >
-      <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} />
-      <span className="photo-grain" aria-hidden="true" />
-      <div className={`photo ${plain ? 'photo--no-filter' : ''}`}></div>
+      <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+      {!unfiltered && <span className="photo-grain" aria-hidden="true" />}
       {children != null && <div className="photo-content">{children}</div>}
     </div>
   )

@@ -1,101 +1,90 @@
 import { Link } from 'react-router-dom'
-import { SERVICES } from '../lib/content'
+import { INDUSTRIES, SERVICES } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
-import Photo from '../components/Photo'
-import { PHOTOS } from '../lib/photos'
 import servicesBg from '../assets/services.jpg'
+import selectiveSearch from '../assets/image.png'
+import freelanceLaptop from '../assets/freelance-cafe-laptop.png'
+import businessBridges from '../assets/business-bridges.png'
+import tailoredLaptops from '../assets/tailored-two-laptops.png'
 
-const SERVICE_PHOTOS = [PHOTOS.leaderWoman, PHOTOS.lounge, PHOTOS.handshake]
+const SERVICE_IMAGES = [
+  { src: selectiveSearch, alt: 'A recruitment consultant evaluating candidate profiles' },
+  { src: freelanceLaptop, alt: 'A laptop ready for independent work in a modern café' },
+  { src: businessBridges, alt: 'Aerial bridges representing valuable business connections' },
+  { src: tailoredLaptops, alt: 'A collaborative HYRO workshop using two laptops' },
+]
 
 export default function OurServices() {
   return (
     <>
-      <header className="about-hero">
-        <img src={servicesBg} className="about-hero-bg-img" alt="" aria-hidden="true" loading="eager" />
-        <div className="about-hero-overlay">
-          <div className="container">
-            <div className="about-hero-copy" style={{ textAlign: 'center', marginInline: 'auto' }}>
-              <Reveal>
-                <span className="kicker centered">{SERVICES.kicker}</span>
-              </Reveal>
-              <Reveal delay={1}>
-                <h1 className="about-hero-h1" style={{ marginTop: 20 }}>
-                  {SERVICES.h2a}<br />
-                  <span className="gold-italic">{SERVICES.h2b}</span>
-                </h1>
-              </Reveal>
-            </div>
+      <header className="services-hero" style={{ '--services-hero-image': `url(${servicesBg})` }}>
+        <div className="container services-hero-content">
+          <div className="services-hero-copy">
+            <Reveal>
+              <span className="kicker">{SERVICES.kicker}</span>
+            </Reveal>
+            <Reveal delay={1}>
+              <h1 className="services-hero-title">
+                {SERVICES.h2a}<br />
+                <span className="gold-italic">{SERVICES.h2b}</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={2}>
+              <p className="services-hero-description">
+                We combine intelligence, experience, and a trusted network to deliver talent and opportunities that drive real impact.
+              </p>
+            </Reveal>
           </div>
         </div>
       </header>
 
-      {SERVICES.items.map((item, i) => {
-        const reverse = i % 2 === 1
-        return (
-          <section key={item.num} className={`section${reverse ? ' cream' : ''}`}>
-            <div className="container">
-              <div className={`media-split${reverse ? ' reverse' : ''}`}>
-                <Reveal className="ms-media">
-                  <Photo src={SERVICE_PHOTOS[i % SERVICE_PHOTOS.length]} alt={item.title} ratio="5 / 4">
-                    <span className="photo-badge" style={{ top: 18, left: 18 }}>{`0${i + 1}`}</span>
-                  </Photo>
-                </Reveal>
-                <Reveal delay={1} className="ms-copy">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                    <span className="icon-ring"><Icon name={item.icon} size={22} /></span>
-                    <span className="sec-index">SERVICE {item.num}</span>
-                  </div>
-                  <h2 className="section-h2" style={{ marginTop: 18 }}>{item.title}</h2>
-                  <p style={{ marginTop: 12, fontFamily: 'var(--font-head)', fontStyle: 'italic', fontWeight: 500, fontSize: 21, color: 'var(--gold-deep)' }}>
-                    {item.tag}
-                  </p>
-                  <p className="muted" style={{ marginTop: 16, lineHeight: 1.8 }}>{item.desc}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 22 }}>
-                    {item.tags.map((t) => (
-                      <span
-                        key={t}
-                        style={{
-                          border: '1px solid var(--line-2)', borderRadius: 999, padding: '8px 16px',
-                          fontSize: 11.5, fontWeight: 600, letterSpacing: '0.06em', color: 'var(--navy)',
-                          textTransform: 'uppercase',
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div style={{ marginTop: 26 }}>
-                    <Link to={item.cta ? '/partner' : '/contact'} className="btn btn-navy">
-                      {item.cta || 'Start a Conversation'} <Icon name="arrow" size={14} />
-                    </Link>
-                  </div>
-                </Reveal>
-              </div>
-            </div>
-          </section>
-        )
-      })}
+      <section className="services-mosaic-section">
+        <div className="container">
+          <div className="services-mosaic">
+            {SERVICES.items.map((item, index) => {
+              const image = SERVICE_IMAGES[index]
+              const reverse = index % 2 === 1
 
-      {/* Closer + CTA on navy */}
-      <section className="cta-photo">
-        <div className="cta-bg">
-          <Photo src={PHOTOS.strategy} alt="" />
+              return (
+                <Reveal key={item.num} className={`service-row${reverse ? ' service-row-reverse' : ''}`}>
+                  <div className="service-row-image">
+                    <img src={image.src} alt={image.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
+                    <div className="service-row-image-shade" />
+                    <span className="service-row-image-label">Service<br />#{index + 1}</span>
+                  </div>
+                  <article className="service-row-content">
+                    <span className="service-row-number">{item.num}</span>
+                    <h2>{item.title}</h2>
+                    <p className="service-row-tag">{item.tag}</p>
+                    <p className="service-row-description">{item.desc}</p>
+                    <div className="service-row-tags">
+                      {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                    </div>
+                    <Link to={item.actionTo} className="service-action-pill">
+                      <Icon name={item.icon} size={17} />
+                      <span>{item.actionLabel}</span>
+                      <Icon name="arrow" size={17} />
+                    </Link>
+                  </article>
+                </Reveal>
+              )
+            })}
+          </div>
         </div>
+      </section>
+
+      <section className="section cream" style={{ textAlign: 'center' }}>
         <div className="container">
           <Reveal>
-            <p className="section-h2" style={{ fontWeight: 700, maxWidth: 820, marginInline: 'auto', lineHeight: 1.3 }}>
-              {SERVICES.closer}
-            </p>
-          </Reveal>
-          <Reveal delay={1}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 34 }}>
-              <Link to="/partner" className="btn btn-primary">
-                Partner With Us <Icon name="arrow" size={14} />
-              </Link>
-              <Link to="/jobs" className="btn btn-ghost">
-                Submit Your Profile
-              </Link>
+            <span className="kicker centered">Industries We Serve</span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 30 }}>
+              {INDUSTRIES.map((ind) => (
+                <span key={ind} className="ind-chip">{ind}</span>
+              ))}
+              <span className="ind-chip" style={{ color: 'var(--gold-deep)', borderColor: 'rgba(244,181,45,0.55)' }}>
+                and more
+              </span>
             </div>
           </Reveal>
         </div>

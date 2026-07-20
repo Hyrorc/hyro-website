@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Starfield from './components/Starfield'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 import Home from './pages/Home'
 import WhatWeDo from './pages/WhatWeDo'
 import OurServices from './pages/OurServices'
@@ -50,6 +51,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   )
 }

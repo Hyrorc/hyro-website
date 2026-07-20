@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { PARTNER } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
@@ -79,30 +78,6 @@ export default function Partner() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta-photo">
-        <div className="cta-bg">
-          <Photo src={PHOTOS.boardroom} alt="" />
-        </div>
-        <div className="container">
-          <Reveal>
-            <span className="kicker centered">Ready When You Are</span>
-            <h2 className="section-h2" style={{ marginTop: 16 }}>
-              Let&apos;s find your <span className="gold-italic">right one.</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 18, flexWrap: 'wrap', marginTop: 32 }}>
-              <Link to="/contact" className="btn btn-primary">
-                <Icon name="mail" size={14} /> Contact Us
-              </Link>
-              <a href={`mailto:${PARTNER.email}`} style={{ color: 'var(--gold)', letterSpacing: '0.16em', fontSize: 13, fontWeight: 600 }}>
-                {PARTNER.email.toUpperCase()}
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </>
   )
 }

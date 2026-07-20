@@ -1,10 +1,9 @@
 import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import { APPROACH } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import Photo from '../components/Photo'
-import { PHOTOS } from '../lib/photos'
+import approachEvaluation from '../assets/approach-evaluation.png'
 
 export default function OurApproach() {
   return (
@@ -26,14 +25,12 @@ export default function OurApproach() {
       <section className="section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 64, alignItems: 'start' }} className="approach-grid">
-            {/* sticky photo rail */}
             <Reveal className="approach-rail">
-              <Photo src={PHOTOS.library} alt="Rigorous evaluation" ratio="4 / 5">
+              <Photo src={approachEvaluation} alt="A recruitment consultant carefully evaluating candidate profiles" ratio="4 / 5" noFilter eager>
                 <span className="photo-badge" style={{ bottom: 18, left: 18 }}>Five steps. One right hire.</span>
               </Photo>
             </Reveal>
 
-            {/* steps */}
             <div style={{ maxWidth: 620 }}>
               {APPROACH.steps.map((step, i) => (
                 <Fragment key={step.num}>
@@ -70,26 +67,6 @@ export default function OurApproach() {
         </div>
       </section>
 
-      <section className="cta-band">
-        <span className="ghost-word">HYRO</span>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <Reveal>
-            <h2 className="section-h2">
-              Let&apos;s define <span className="gold-italic">success together.</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 32 }}>
-              <Link to="/partner" className="btn btn-primary">
-                Partner With Us <Icon name="arrow" size={14} />
-              </Link>
-              <Link to="/jobs" className="btn btn-ghost">
-                Submit Your Profile
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
     </>
   )
 }

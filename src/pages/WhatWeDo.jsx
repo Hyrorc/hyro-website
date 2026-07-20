@@ -5,7 +5,7 @@ import Reveal from '../components/Reveal'
 import Photo from '../components/Photo'
 import CountUp from '../components/CountUp'
 import { PHOTOS } from '../lib/photos'
-import aboutBg from '../assets/brand/about-hero-bg.jpg'
+import aboutBg from '../assets/about-hero-bg.jpg'
 
 const ACRONYM = [
   ['H', 'Hire'],

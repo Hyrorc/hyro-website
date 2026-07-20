@@ -4,7 +4,7 @@ import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import Photo from '../components/Photo'
 import { PHOTOS } from '../lib/photos'
-import servicesBg from '../assets/brand/services.jpg'
+import servicesBg from '../assets/services.jpg'
 
 const SERVICE_PHOTOS = [PHOTOS.leaderWoman, PHOTOS.lounge, PHOTOS.handshake]
 

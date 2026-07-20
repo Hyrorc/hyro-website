@@ -149,47 +149,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* INDUSTRIES — cream band */}
-      <section className="section cream" style={{ textAlign: 'center' }}>
-        <div className="container">
-          <Reveal>
-            <span className="kicker centered">Industries We Serve</span>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 30 }}>
-              {INDUSTRIES.map((ind) => (
-                <span key={ind} className="ind-chip">{ind}</span>
-              ))}
-              <span className="ind-chip" style={{ color: 'var(--gold-deep)', borderColor: 'rgba(244,181,45,0.55)' }}>
-                and more
-              </span>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CTA with photo */}
-      <section className="cta-photo">
-        <div className="cta-bg">
-          <Photo src={PHOTOS.strategy} alt="" ratio={undefined} />
-        </div>
-        <div className="container">
-          <Reveal>
-            <span className="kicker centered">Let&apos;s Build</span>
-            <h2 className="section-h2" style={{ marginTop: 16 }}>
-              Your next great hire<br /><span className="gold-italic">is one conversation away.</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14, marginTop: 34 }}>
-              <Link to="/partner" className="btn btn-primary">
-                Partner With Us <Icon name="arrow" size={14} />
-              </Link>
-              <Link to="/contact" className="btn btn-ghost">
-                Let&apos;s Connect
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+ 
     </>
   )
 }

@@ -447,6 +447,16 @@ main, .footer { position: relative; z-index: 1; }
   }
 }
 
+/* Services 2 & 4 — transparent (dark) rows */
+.services-mosaic { background: transparent; }
+.service-row:nth-child(2), .service-row:nth-child(4) { background: transparent; }
+.service-row:nth-child(2) .service-row-content, .service-row:nth-child(4) .service-row-content { background: transparent; }
+.service-row:nth-child(2) .service-row-content h2, .service-row:nth-child(4) .service-row-content h2 { color: var(--ivory); }
+.service-row:nth-child(2) .service-row-number, .service-row:nth-child(4) .service-row-number,
+.service-row:nth-child(2) .service-row-tag, .service-row:nth-child(4) .service-row-tag { color: var(--gold); }
+.service-row:nth-child(2) .service-row-description, .service-row:nth-child(4) .service-row-description { color: rgba(246,242,233,0.74); }
+.service-row:nth-child(2) .service-row-tags span, .service-row:nth-child(4) .service-row-tags span { color: var(--ivory); border-color: rgba(246,242,233,0.32); }
+
 /* page header (navy) */
 .page-head {
   position: relative; padding: 160px 0 84px; text-align: center; overflow: hidden;

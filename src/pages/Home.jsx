@@ -28,7 +28,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={3}>
               <div className="hero-cta-grid">
-                <Link to="/jobs" className="hero-action hero-action-primary">
+                <Link to="/jobs" className="hero-action">
                   <Icon name="users" size={22} />
                   <span>Submit Your Profile</span>
                   <Icon name="arrow" size={21} />

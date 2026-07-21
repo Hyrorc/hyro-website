@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ABOUT, SERVICES, STATS } from '../lib/content'
+import { ABOUT, STATS } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import CountUp from '../components/CountUp'
@@ -97,30 +97,6 @@ export default function WhatWeDo() {
                 Get In Touch <Icon name="arrow" size={14} />
               </Link>
             </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="about-services-section">
-        <div className="container">
-          <Reveal>
-            <div className="about-services-heading">
-              <span className="kicker centered">Our Services</span>
-              <h2 className="section-h2">How we help you <span className="gold-italic">move forward.</span></h2>
-            </div>
-          </Reveal>
-          <div className="about-services-grid">
-            {SERVICES.items.map((service, index) => (
-              <Reveal key={service.title} delay={index + 1}>
-                <Link to="/services" className="about-service-card">
-                  <span className="about-service-number">{service.num}</span>
-                  <Icon name={service.icon} size={25} />
-                  <h3>{service.title}</h3>
-                  <p>{service.tag}</p>
-                  <span className="about-service-link">Explore Service <Icon name="arrow" size={14} /></span>
-                </Link>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>

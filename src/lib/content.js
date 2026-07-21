@@ -16,8 +16,9 @@ export const HERO = {
 
 export const PILLARS = [
   { icon: 'crosshair', title: 'Precise Matching', desc: 'We find the right people with pinpoint accuracy.' },
-  { icon: 'shield', title: 'Trust & Discretion', desc: 'Your search is handled with absolute confidentiality.' },
-  { icon: 'trend', title: 'Lasting Impact', desc: 'Stronger teams. Bigger results.' },
+  { icon: 'shield', title: 'Absolute Discretion', desc: 'Confidential mandates handled with complete privacy.' },
+  { icon: 'handshake', title: 'Trusted Network', desc: 'Our network is our strength. Built over years of relationships and referrals.' },
+  { icon: 'trend', title: 'Lasting Impact', desc: 'We care about outcomes that create long-term value for your business.' },
 ]
 
 export const ABOUT = {
@@ -33,9 +34,9 @@ export const ABOUT = {
 }
 
 export const STATS = [
-  { value: '12', label: 'Active Mandates' },
-  { value: '27', label: 'Curated Professionals' },
-  { value: '5+', label: 'Industries Served' },
+  { value: '21', label: 'Active Mandates', icon: 'checks' },
+  { value: '300+', label: 'Curated Professionals', icon: 'users' },
+  { value: '5+', label: 'Industries Served', icon: 'crosshair' },
 ]
 
 export const SERVICES = {

@@ -6,6 +6,7 @@ import CountUp from '../components/CountUp'
 import { PHOTOS } from '../lib/photos'
 import { HERO, PILLARS, INDUSTRIES, STATS } from '../lib/content'
 import heroWatch from '../assets/hero-watch.png'
+import whyHyro from '../assets/why-hyro.jpg'
 
 export default function Home() {
   return (
@@ -53,29 +54,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PILLARS — cream band */}
-      <section className="section cream">
+      {/* MANDATES / STATS — bordered box on the dark band */}
+      <section className="stat-band">
         <div className="container">
-          <Reveal>
-            <div className="sec-head center" style={{ marginBottom: 44 }}>
-              <span className="kicker centered">Why HYRO</span>
-              <h2 className="section-h2" style={{ marginTop: 16 }}>
-                Built on precision,<br /><span className="gold-italic">trust, and impact.</span>
-              </h2>
-            </div>
-          </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
-            {PILLARS.map((p, i) => (
-              <Reveal key={p.title} delay={i + 1}>
-                <div className="card" style={{ height: '100%' }}>
-                  <div className="icon-ring" style={{ marginBottom: 18 }}>
-                    <Icon name={p.icon} size={22} />
-                  </div>
-                  <div className="card-title" style={{ marginBottom: 10 }}>{p.title}</div>
-                  <p className="card-desc">{p.desc}</p>
-                </div>
+          <div className="stat-grid">
+            {STATS.map((s) => (
+              <Reveal key={s.label} className="stat-cell">
+                <span className="stat-icon"><Icon name={s.icon} size={22} /></span>
+                <div className="stat-value"><CountUp value={s.value} /></div>
+                <div className="stat-label" style={{ marginTop: 8 }}>{s.label}</div>
               </Reveal>
             ))}
+            <Reveal className="stat-cell">
+              <span className="stat-icon"><Icon name="trend" size={22} /></span>
+              <div className="stat-value"><CountUp value="98%" /></div>
+              <div className="stat-label" style={{ marginTop: 8 }}>Client Retention</div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY HYRO — photo + pillars */}
+      <section className="section cream">
+        <div className="container">
+          <div className="why-grid">
+            <Reveal className="why-media">
+              <img src={whyHyro} className="why-image" alt="The HYRO lounge" loading="lazy" />
+            </Reveal>
+            <div className="why-copy">
+              <Reveal>
+                <span className="kicker">Why HYRO</span>
+                <h2 className="section-h2" style={{ marginTop: 14 }}>
+                  Built on precision,<br /><span className="gold-italic">trust, and impact.</span>
+                </h2>
+              </Reveal>
+              <div className="why-cards">
+                {PILLARS.map((p, i) => (
+                  <Reveal key={p.title} delay={i + 1}>
+                    <div className="why-card">
+                      <div className="icon-ring"><Icon name={p.icon} size={20} /></div>
+                      <div className="card-title">{p.title}</div>
+                      <p className="card-desc">{p.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -118,25 +142,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STAT BAND — navy */}
-      <section className="section tight stat-band">
-        <div className="container">
-          <div className="stat-grid">
-            {STATS.map((s) => (
-              <Reveal key={s.label} className="stat-cell">
-                <div className="stat-value"><CountUp value={s.value} /></div>
-                <div className="stat-label" style={{ marginTop: 8 }}>{s.label}</div>
-              </Reveal>
-            ))}
-            <Reveal className="stat-cell">
-              <div className="stat-value"><CountUp value="98%" /></div>
-              <div className="stat-label" style={{ marginTop: 8 }}>Client Retention</div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
- 
     </>
   )
 }

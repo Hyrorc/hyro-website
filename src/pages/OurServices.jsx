@@ -51,7 +51,6 @@ export default function OurServices() {
                   <div className="service-row-image">
                     <img src={image.src} alt={image.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
                     <div className="service-row-image-shade" />
-                    <span className="service-row-image-label">Service<br />#{index + 1}</span>
                   </div>
                   <article className="service-row-content">
                     <span className="service-row-number">{item.num}</span>

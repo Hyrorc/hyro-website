@@ -393,6 +393,8 @@ main, .footer { position: relative; z-index: 1; }
 .stat-band .stat-cell { text-align: center; padding: 8px 12px; border-left: 1px solid rgba(246,242,233,0.12); }
 .stat-band .stat-cell:first-child { border-left: 0; }
 .stat-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-bottom: 12px; border-radius: 12px; background: rgba(244,181,45,0.14); color: var(--gold); }
+.stat-band .stat-value { color: var(--ivory); }
+.stat-band .stat-label { color: rgba(246, 242, 233, 0.85); }
 
 /* WHY HYRO — photo + 2x2 pillar cards */
 .why-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }

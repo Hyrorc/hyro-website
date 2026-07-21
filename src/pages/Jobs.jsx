@@ -3,7 +3,7 @@ import { JOBS_FORM } from '../lib/content'
 import { sendForm } from '../lib/sendForm'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
-import jobsHero from '../assets/cv.jpg'
+import jobsHero from '../assets/laptopp.jpg'
 
 const WORK_ICONS = { 'On-Site': 'radar', Hybrid: 'handshake', Remote: 'search' }
 

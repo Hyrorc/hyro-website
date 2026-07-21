@@ -608,3 +608,77 @@ main, .footer { position: relative; z-index: 1; }
 }
 
 @media (max-width: 460px) { .footer-cols { grid-template-columns: 1fr; } .stat-band .stat-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ============ Shared page hero (curved navy + right photo) ============ */
+.page-hero {
+  position: relative; min-height: 500px; display: flex; align-items: center; overflow: hidden;
+  background-color: var(--navy-deep);
+  background-image:
+    linear-gradient(90deg, rgba(14,24,56,0.97) 0%, rgba(14,24,56,0.88) 36%, rgba(14,24,56,0.5) 66%, rgba(14,24,56,0.14) 100%),
+    linear-gradient(180deg, rgba(14,24,56,0.12), rgba(14,24,56,0.4)),
+    var(--page-hero-image);
+  background-position: center, center, center right;
+  background-repeat: no-repeat; background-size: cover;
+  color: var(--ivory);
+  border-bottom-left-radius: 50% 48px;
+  border-bottom-right-radius: 50% 48px;
+}
+.page-hero-inner { position: relative; z-index: 1; width: 100%; }
+.page-hero-copy { max-width: 600px; padding: 150px 0 104px; text-shadow: 0 3px 22px rgba(0,0,0,0.4); }
+.page-hero .kicker { color: var(--gold); }
+.page-hero-title { margin-top: 16px; font-family: var(--font-head); font-size: clamp(46px, 5.4vw, 76px); font-weight: 500; line-height: 0.98; letter-spacing: -0.01em; color: var(--ivory); }
+.page-hero-title .gold-italic { color: var(--gold); }
+.page-hero-rule { width: 54px; height: 2px; background: var(--gold); margin: 24px 0; }
+.page-hero-sub { max-width: 440px; font-size: 15.5px; line-height: 1.75; color: rgba(246,242,233,0.84); }
+
+/* ============ Approach timeline ============ */
+.approach-timeline { padding: 74px 0 46px; }
+.approach-steps { position: relative; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.approach-steps::before { content: ''; position: absolute; left: 60px; top: 40px; bottom: 40px; width: 2px; background: repeating-linear-gradient(180deg, rgba(244,181,45,0.7) 0 5px, transparent 5px 12px); z-index: 0; }
+.approach-step {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 64px 84px 1fr 56px; align-items: center; gap: 22px;
+  padding: 22px 30px; background: #fffdf9; border: 1px solid var(--line); border-radius: 22px;
+  box-shadow: 0 20px 44px -32px rgba(20,34,75,0.3);
+}
+.approach-num { width: 56px; height: 56px; border-radius: 50%; background: var(--navy-deep); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 18px; }
+.approach-icon { width: 78px; height: 78px; border-radius: 50%; background: var(--white); border: 1px solid rgba(244,181,45,0.4); display: flex; align-items: center; justify-content: center; color: var(--gold-deep); box-shadow: 0 10px 22px -14px rgba(20,34,75,0.35); }
+.approach-body h3 { font-family: var(--font-head); font-size: 27px; font-weight: 600; color: var(--navy); line-height: 1; }
+.approach-body-rule { display: block; width: 30px; height: 2px; background: var(--gold); margin: 9px 0; }
+.approach-body p { font-size: 14px; line-height: 1.6; color: var(--ink-2); max-width: 340px; }
+.approach-deco { justify-self: end; color: rgba(184,134,11,0.5); }
+
+/* ============ Approach CTA bar ============ */
+.approach-cta { padding: 16px 0 90px; }
+.approach-cta-bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px; background: var(--navy-deep); border: 1px solid rgba(244,181,45,0.3); border-radius: 20px; padding: 26px 34px; color: var(--ivory); }
+.approach-cta-icon { width: 54px; height: 54px; border-radius: 50%; border: 1px solid rgba(244,181,45,0.4); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; }
+.approach-cta-text { font-family: var(--font-head); font-size: 21px; line-height: 1.3; color: var(--ivory); }
+.approach-cta-text em { color: var(--gold); font-style: italic; }
+.btn-outline-gold { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--gold); color: var(--gold); border-radius: 999px; padding: 13px 24px; font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; }
+.btn-outline-gold svg { transition: transform 0.2s ease; }
+.btn-outline-gold:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+.btn-outline-gold:hover svg { transform: translateX(3px); }
+
+/* ============ Profile form (candidates) ============ */
+.profile-form-section { position: relative; z-index: 2; margin-top: -58px; padding: 0 0 90px; }
+.profile-form-card { max-width: 900px; margin: 0 auto; background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 46px 50px; box-shadow: 0 44px 90px -54px rgba(20,34,75,0.45); display: flex; flex-direction: column; gap: 34px; }
+.form-block-head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.form-icon-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--navy-deep); color: var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.form-block-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); }
+.toggle-pill { display: inline-flex; align-items: center; gap: 9px; }
+.profile-submit { width: 100%; }
+
+@media (max-width: 900px) {
+  .approach-step { grid-template-columns: 52px 64px 1fr; padding: 20px 22px; gap: 16px; }
+  .approach-steps::before { left: 48px; }
+  .approach-num { width: 48px; height: 48px; font-size: 16px; }
+  .approach-icon { width: 62px; height: 62px; }
+  .approach-deco { display: none; }
+  .approach-cta-bar { grid-template-columns: 1fr; text-align: center; gap: 18px; justify-items: center; }
+  .profile-form-card { padding: 36px 26px; }
+}
+@media (max-width: 768px) {
+  .page-hero { min-height: 440px; border-bottom-left-radius: 50% 30px; border-bottom-right-radius: 50% 30px; background-position: center, center, 66% center; }
+  .page-hero-copy { padding: 122px 0 78px; }
+  .approach-body h3 { font-size: 23px; }
+}

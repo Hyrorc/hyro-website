@@ -8,6 +8,7 @@ import lounge from '../assets/lounge.jpg'
 import cv from '../assets/cv.jpg'
 import lobby from '../assets/lobby.jpg'
 import strategy from '../assets/strategy.jpg'
+import contactMeeting from '../assets/contact-meeting.png'
 
 export const PHOTOS = {
   heroMeeting: hero,
@@ -24,6 +25,6 @@ export const PHOTOS = {
   portraitWoman: woman,
   portraitMan: freelance,
   office: lounge,
-  desk: cv,
+  desk: contactMeeting,
   boardroom: lounge,
 }

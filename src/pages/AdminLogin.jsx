@@ -7,8 +7,8 @@ export default function AdminLogin({ onSuccess }) {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    const stored = window.localStorage.getItem('hyro-admin-auth')
-    if (stored === 'true') onSuccess?.()
+    const token = window.sessionStorage.getItem('hyro-admin-token')
+    if (token) onSuccess?.()
   }, [onSuccess])
 
   async function handleSubmit(e) {
@@ -28,7 +28,6 @@ export default function AdminLogin({ onSuccess }) {
         throw new Error(data.error || 'Login failed')
       }
 
-      window.localStorage.setItem('hyro-admin-auth', 'true')
       // Keep the password for the session so the dashboard can authorize
       // RecruitCRM reads against /api/admin/candidates.
       window.sessionStorage.setItem('hyro-admin-token', password)

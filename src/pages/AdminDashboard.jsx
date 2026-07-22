@@ -6,7 +6,6 @@ function getToken() {
 
 function signOut() {
   window.sessionStorage.removeItem('hyro-admin-token')
-  window.localStorage.removeItem('hyro-admin-auth')
   window.location.assign('/admin')
 }
 
@@ -97,7 +96,7 @@ export default function AdminDashboard() {
 
   const load = useCallback(async () => {
     const token = getToken()
-    if (window.localStorage.getItem('hyro-admin-auth') !== 'true' || !token) {
+    if (!token) {
       window.location.assign('/admin')
       return
     }

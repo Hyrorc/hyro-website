@@ -17,6 +17,7 @@ const LIST_TIMEOUT_MS = 15_000
 export const SOURCE_PREFIX = 'HYRO Website'
 export const SOURCE_PROFILE = `${SOURCE_PREFIX} — Submit Your Profile`
 export const SOURCE_FREELANCER = `${SOURCE_PREFIX} — Become a Freelancer`
+export const SOURCE_WHATSAPP = `${SOURCE_PREFIX} — WhatsApp CV`
 
 function splitName(fullName) {
   const parts = String(fullName || '').trim().split(/\s+/).filter(Boolean)
@@ -182,7 +183,7 @@ function normalizeCandidate(c) {
     // Where the record came from: our website form vs added directly in the CRM.
     channel: source.startsWith(SOURCE_PREFIX) ? 'website' : 'direct',
     // Which website form produced it (only meaningful for channel === 'website').
-    form: source.includes('Become a Freelancer') ? 'freelancer' : 'profile',
+    form: source.includes('Become a Freelancer') ? 'freelancer' : source.includes('WhatsApp') ? 'whatsapp' : 'profile',
     source,
     cvUrl: resumeUrl(c),
     createdAt: pick(c.created_on, c.createdOn, c.created_at, c.updated_on) || null,

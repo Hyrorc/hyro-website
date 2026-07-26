@@ -38,7 +38,7 @@ export default function BusinessIntro() {
     <>
       <header className="page-head page-head--photo">
         <div className="ph-media" aria-hidden="true">
-          <Photo src={PHOTOS.handshake} alt="Business introductions" veil />
+          <Photo src={PHOTOS.handshake} alt="Business introductions" noFilter />
         </div>
         <div className="ph-inner">
           <div className="ph-copy">

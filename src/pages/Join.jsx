@@ -48,7 +48,7 @@ export default function Join() {
     <>
       <header className="page-head page-head--photo">
         <div className="ph-media" aria-hidden="true">
-          <Photo src={freelanceLaptop} alt="Join the HYRO freelance network" veil />
+          <Photo src={freelanceLaptop} alt="Join the HYRO freelance network" noFilter />
         </div>
         <div className="ph-inner">
           <div className="ph-copy">

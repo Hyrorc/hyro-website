@@ -38,7 +38,7 @@ export default function Partner() {
     <>
       <header className="page-head page-head--photo">
         <div className="ph-media" aria-hidden="true">
-          <Photo src={PHOTOS.cityExec} alt="Partner with HYRO" veil />
+          <Photo src={PHOTOS.cityExec} alt="Partner with HYRO" noFilter />
         </div>
         <div className="ph-inner">
           <div className="ph-copy">

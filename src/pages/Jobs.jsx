@@ -52,7 +52,7 @@ export default function Jobs() {
     <>
       <header className="page-head page-head--photo">
         <div className="ph-media" aria-hidden="true">
-          <Photo src={PHOTOS.cvDesk} alt="Unlock your potential" veil />
+          <Photo src={PHOTOS.cvDesk} alt="Unlock your potential" noFilter />
         </div>
         <div className="ph-inner">
           <div className="ph-copy">

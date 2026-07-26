@@ -13,7 +13,7 @@ export default function OurApproach() {
     <>
       <header className="page-head page-head--photo">
         <div className="ph-media" aria-hidden="true">
-          <Photo src={approachEvaluation} alt="A recruitment consultant carefully evaluating candidate profiles" veil eager />
+          <Photo src={approachEvaluation} alt="A recruitment consultant carefully evaluating candidate profiles" noFilter eager />
         </div>
         <div className="ph-inner">
           <div className="ph-copy">

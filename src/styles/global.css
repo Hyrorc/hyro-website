@@ -225,8 +225,7 @@ main, .footer { position: relative; z-index: 1; }
 .photo-content { position: absolute; inset: 0; z-index: 4; }
 /* refined gold hairline frame (inside the image) */
 .photo--frame { box-shadow: inset 0 0 0 1px rgba(244,181,45,0.28); }
-.media-split .ms-media .photo, .form-aside .photo, .approach-rail .photo,
-.page-head--photo .ph-media .photo { box-shadow: inset 0 0 0 1px rgba(244,181,45,0.22), 0 40px 80px -40px rgba(20,34,75,0.55); }
+.media-split .ms-media .photo, .form-aside .photo, .approach-rail .photo { box-shadow: inset 0 0 0 1px rgba(244,181,45,0.22), 0 40px 80px -40px rgba(20,34,75,0.55); }
 
 /* small floating stat/caption chip for photos */
 .photo-chip {
@@ -585,9 +584,10 @@ main, .footer { position: relative; z-index: 1; }
 .page-head--photo .ph-copy .kicker { justify-content: flex-start; color: var(--gold); }
 .page-head--photo .ph-media { position: absolute; top: 0; right: 0; bottom: 0; width: 42%; z-index: 1; }
 .page-head--photo .ph-media .photo { height: 100%; border-radius: 0; }
-.page-head--photo .ph-media::after { /* blend photo into navy on its left edge */
-  content: ''; position: absolute; inset: 0; z-index: 5; pointer-events: none;
-  background: linear-gradient(90deg, var(--navy) 0%, rgba(20,34,75,0) 45%);
+/* small soften at the seam where the photo's own colors meet the navy panel */
+.page-head--photo .ph-media::after {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(90deg, var(--navy) 0%, rgba(20,34,75,0) 5%);
 }
 
 /* curved divider under a photo hero (page-head--photo) */
@@ -747,7 +747,7 @@ main, .footer { position: relative; z-index: 1; }
   .form-aside { position: static; flex-direction: row; }
   .form-aside .photo { flex: 1; aspect-ratio: 3 / 4; }
   .page-head--photo .ph-media { position: relative; width: 100%; height: 240px; order: -1; }
-  .page-head--photo .ph-media::after { background: linear-gradient(180deg, rgba(20,34,75,0.2), var(--navy)); }
+  .page-head--photo .ph-media::after { background: linear-gradient(180deg, rgba(20,34,75,0) 88%, var(--navy) 100%); }
   .page-head--photo .ph-copy { padding: 40px 0 56px; }
   .page-head--photo { display: flex; flex-direction: column; padding-top: 78px; }
   .stat-band .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 12px; }
@@ -799,7 +799,7 @@ main, .footer { position: relative; z-index: 1; }
   .about-stat-value { font-size: 29px; }
   .about-stat-label { font-size: 8px; }
   .about-quote-mark { position: static; height: 43px; }
-  .about-editorial-copy { padding: 58px var(--pad-x); }
+  .about-editorial-copy { padding: 58px var(--pad-x) 8px; }
   .about-editorial-image-wrap { min-height: 320px; }
   .about-services-grid { grid-template-columns: 1fr; }
   .services-hero { min-height: 520px; background-position: center, center, 62% center; }

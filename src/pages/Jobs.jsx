@@ -3,7 +3,8 @@ import { JOBS_FORM } from '../lib/content'
 import { sendForm } from '../lib/sendForm'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
-import jobsHero from '../assets/laptopp.jpg'
+import Photo from '../components/Photo'
+import { PHOTOS } from '../lib/photos'
 
 const WORK_ICONS = { 'On-Site': 'radar', Hybrid: 'handshake', Remote: 'search' }
 
@@ -80,7 +81,6 @@ export default function Jobs() {
 
       <section className="profile-form-section">
         <div className="container">
-          <div className="form-solo">
           <Reveal>
             <form className="profile-form-card" onSubmit={handleSubmit}>
               {/* PERSONAL DETAILS */}
@@ -104,6 +104,7 @@ export default function Jobs() {
                   </div>
                 </div>
               </div>
+              
 
               {/* ROLE PREFERENCES */}
               <div className="form-block">
@@ -202,6 +203,7 @@ export default function Jobs() {
           </Reveal>
         </div>
       </section>
+
     </>
   )
 }

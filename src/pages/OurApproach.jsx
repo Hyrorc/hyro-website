@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { APPROACH } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
-import approachHero from '../assets/desk.jpg'
+import Photo from '../components/Photo'
+import approachEvaluation from '../assets/approach-evaluation.png'
 
 const DECO = ['users', 'search', 'checks', 'handshake', 'trend']
 

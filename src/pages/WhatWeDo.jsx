@@ -3,8 +3,8 @@ import { ABOUT, STATS } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import CountUp from '../components/CountUp'
-import philosophyBooks from '../assets/about-philosophy-books.png'
-import rowingTeam from '../assets/about-rowing-team.png'
+import philosophyBooks from '../assets/our-philosophy.jpg'
+import rowingTeam from '../assets/about-recruitment-partner.jpg'
 
 const ACRONYM = [
   ['H', 'Hire'],
@@ -74,7 +74,7 @@ export default function WhatWeDo() {
             </Reveal>
           </div>
           <Reveal className="about-editorial-image-wrap">
-            <img src={philosophyBooks} className="about-editorial-image" alt="Vintage books representing knowledge, experience, and thoughtful leadership" />
+            <img src={philosophyBooks} className="about-editorial-image" alt="A thoughtful, deliberate move representing HYRO's considered approach" />
           </Reveal>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default function WhatWeDo() {
       <section className="about-editorial about-editorial-dark">
         <div className="about-editorial-grid about-editorial-grid-reverse">
           <Reveal className="about-editorial-image-wrap">
-            <img src={rowingTeam} className="about-editorial-image" alt="A rowing team moving together with precision" />
+            <img src={rowingTeam} className="about-editorial-image" alt="City skyscrapers representing HYRO as a trusted recruitment partner" />
           </Reveal>
           <div className="about-editorial-copy">
             <Reveal delay={1}>

@@ -4,15 +4,15 @@ import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
 import servicesBg from '../assets/services.jpg'
 import selectiveSearch from '../assets/desk.jpg'
-import freelanceLaptop from '../assets/freelance-cafe-laptop.png'
-import businessBridges from '../assets/business-bridges.png'
-import tailoredLaptops from '../assets/tailored-two-laptops.png'
+import freelanceLaptop from '../assets/freelancer-cafe.jpg'
+import businessBridges from '../assets/business-intro-view.jpg'
+import tailoredLaptops from '../assets/solutions-chess.jpg'
 
 const SERVICE_IMAGES = [
   { src: selectiveSearch, alt: 'A recruitment consultant evaluating candidate profiles' },
-  { src: freelanceLaptop, alt: 'A laptop ready for independent work in a modern café' },
-  { src: businessBridges, alt: 'Aerial bridges representing valuable business connections' },
-  { src: tailoredLaptops, alt: 'A collaborative HYRO workshop using two laptops' },
+  { src: freelanceLaptop, alt: 'An independent professional working from a café' },
+  { src: businessBridges, alt: 'A city skyline view representing valuable business connections' },
+  { src: tailoredLaptops, alt: 'A deliberate, strategic move representing tailored solutions' },
 ]
 
 export default function OurServices() {

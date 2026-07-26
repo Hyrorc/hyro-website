@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import { APPROACH } from '../lib/content'
 import { Icon } from '../components/Icons'
 import Reveal from '../components/Reveal'
-import Photo from '../components/Photo'
-import approachEvaluation from '../assets/approach-evaluation.png'
+import approachHero from '../assets/desk.jpg'
+
+const DECO = ['users', 'search', 'checks', 'handshake', 'trend']
 
 export default function OurApproach() {
   return (
@@ -39,7 +40,7 @@ export default function OurApproach() {
         </div>
       </header>
 
-      <section className="section">
+      <section className="approach-timeline">
         <div className="container">
           <div className="approach-stepper">
             {APPROACH.steps.map((step, i) => (

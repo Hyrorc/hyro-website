@@ -41,7 +41,7 @@ export default function OurApproach() {
         </div>
       </header>
 
-      <section className="approach-timeline">
+      <section className="section">
         <div className="container">
           <div className="approach-stepper">
             {APPROACH.steps.map((step, i) => (

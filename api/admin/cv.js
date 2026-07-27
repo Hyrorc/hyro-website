@@ -13,6 +13,15 @@ function safeEqual(a, b) {
   return timingSafeEqual(ab, bb)
 }
 
+// Identify a file by its magic bytes rather than trusting an upstream
+// Content-Type header that's frequently wrong/missing.
+function sniffContentType(buffer) {
+  if (buffer.length >= 4 && buffer.subarray(0, 4).toString('hex') === '25504446') return 'application/pdf' // %PDF
+  if (buffer.length >= 4 && buffer.subarray(0, 4).toString('hex') === '504b0304') return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' // zip (docx)
+  if (buffer.length >= 4 && buffer.subarray(0, 4).toString('hex') === 'd0cf11e0') return 'application/msword' // legacy OLE (doc)
+  return null
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' })
@@ -50,9 +59,14 @@ export default async function handler(req, res) {
       return
     }
     const buffer = Buffer.from(await upstream.arrayBuffer())
-    res.setHeader('Content-Type', upstream.headers.get('content-type') || 'application/octet-stream')
+    // RecruitCRM's storage often reports a generic application/octet-stream
+    // even for PDFs, which leaves the browser unable to tell what it just
+    // downloaded. Sniff the actual file signature and only fall back to the
+    // upstream header (or a plain PDF assumption) if that's inconclusive.
+    const contentType = sniffContentType(buffer) || upstream.headers.get('content-type') || 'application/pdf'
+    res.setHeader('Content-Type', contentType)
     const disposition = upstream.headers.get('content-disposition')
-    res.setHeader('Content-Disposition', disposition || 'attachment; filename="cv"')
+    res.setHeader('Content-Disposition', disposition || 'attachment; filename="cv.pdf"')
     res.status(200).send(buffer)
   } catch (err) {
     console.error('CV proxy error:', err)

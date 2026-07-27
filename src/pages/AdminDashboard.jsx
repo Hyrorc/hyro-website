@@ -174,6 +174,31 @@ export default function AdminDashboard() {
     [candidates],
   )
 
+  // RecruitCRM's file storage doesn't always report a correct Content-Type
+  // (frequently just application/octet-stream), so the blob's reported MIME
+  // type alone isn't reliable for picking a file extension. Sniff the actual
+  // file signature first and only fall back to the MIME type / URL / a plain
+  // .pdf default (virtually every CV here is a PDF) if that's inconclusive.
+  async function detectCvExtension(blob, url) {
+    const head = new Uint8Array(await blob.slice(0, 4).arrayBuffer())
+    const sig = [...head].map((b) => b.toString(16).padStart(2, '0')).join('')
+    if (sig.startsWith('25504446')) return '.pdf' // %PDF
+    if (sig.startsWith('504b0304')) return '.docx' // zip container (docx/xlsx/...)
+    if (sig.startsWith('d0cf11e0')) return '.doc' // legacy OLE (doc/xls/...)
+
+    const byType = {
+      'application/pdf': '.pdf',
+      'application/msword': '.doc',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '.docx',
+    }[blob.type]
+    if (byType) return byType
+
+    const fromUrl = url.match(/\.(pdf|docx?)(?:[?#]|$)/i)
+    if (fromUrl) return `.${fromUrl[1].toLowerCase()}`
+
+    return '.pdf'
+  }
+
   async function handleDownloadCv(url, name) {
     const token = getToken()
     const res = await fetch(`/api/admin/cv?u=${encodeURIComponent(url)}`, { headers: { Authorization: `Bearer ${token}` } })
@@ -182,7 +207,7 @@ export default function AdminDashboard() {
       return
     }
     const blob = await res.blob()
-    const ext = { 'application/pdf': '.pdf', 'application/msword': '.doc', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '.docx' }[blob.type] || ''
+    const ext = await detectCvExtension(blob, url)
     const objectUrl = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = objectUrl
